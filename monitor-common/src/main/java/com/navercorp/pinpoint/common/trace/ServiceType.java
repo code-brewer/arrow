@@ -140,10 +140,6 @@ import static com.navercorp.pinpoint.common.trace.ServiceTypeProperty.*;
  *
  * 
  * <tr><td></td><td></td></tr>
- * 
- * @author emeroad
- * @author netspider
- * @author Jongho Moon
  */
 public interface ServiceType {
 

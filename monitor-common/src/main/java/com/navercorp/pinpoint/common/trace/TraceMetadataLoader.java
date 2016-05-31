@@ -31,14 +31,20 @@ import com.navercorp.pinpoint.common.plugin.PluginLoader;
  *
  */
 public class TraceMetadataLoader {
+	
     private final Logger logger = Logger.getLogger(getClass().getName());
-
     private final List<ServiceTypeInfo> serviceTypeInfos = new ArrayList<ServiceTypeInfo>();
     private final ServiceTypeChecker serviceTypeChecker = new ServiceTypeChecker();
-
     private final List<AnnotationKey> annotationKeys = new ArrayList<AnnotationKey>();
     private final AnnotationKeyChecker annotationKeyChecker = new AnnotationKeyChecker();
 
+    
+    
+    
+    
+    
+    
+    
     public void load(URL[] urls) {
         if (urls == null) {
             throw new NullPointerException("urls must not be null");
@@ -48,6 +54,9 @@ public class TraceMetadataLoader {
         load(providers);
     }
     
+    
+    
+    
     public void load(ClassLoader loader) {
         if (loader == null) {
             throw new NullPointerException("loader must not be null");
@@ -56,6 +65,9 @@ public class TraceMetadataLoader {
         List<TraceMetadataProvider> providers = PluginLoader.load(TraceMetadataProvider.class, loader);
         load(providers);
     }
+    
+    
+    
     
     public void load(List<TraceMetadataProvider> providers) {
         if (providers == null) {
@@ -85,8 +97,14 @@ public class TraceMetadataLoader {
         return annotationKeys;
     }
 
+    
+    
+    
+    
 
     private class TraceMetadataSetupContextImpl implements TraceMetadataSetupContext {
+    	
+    	
         private final Class<?> provider;
 
         public TraceMetadataSetupContextImpl(Class<?> provider) {
@@ -102,6 +120,9 @@ public class TraceMetadataLoader {
             addType0(type);
         }
 
+        
+        
+        
         @Override
         public void addServiceType(ServiceType serviceType, AnnotationKeyMatcher annotationKeyMatcher) {
             if (serviceType == null) {
@@ -114,6 +135,9 @@ public class TraceMetadataLoader {
             addType0(type);
         }
 
+        
+        
+        
         private void addType0(ServiceTypeInfo type) {
             if (type == null) {
                 throw new NullPointerException("type must not be null");
@@ -143,6 +167,9 @@ public class TraceMetadataLoader {
         return pair.value.getName() + "(" + pair.value.getCode() + ") from " + pair.provider.getName();
     }
 
+    
+    
+    
     private static class Pair<T> {
         private final T value;
         private final Class<?> provider;
@@ -152,6 +179,10 @@ public class TraceMetadataLoader {
             this.provider = provider;
         }
     }
+    
+    
+    
+    
     
     private class ServiceTypeChecker {
         private final Map<String, Pair<ServiceType>> serviceTypeNameMap = new HashMap<String, Pair<ServiceType>>();
@@ -195,6 +226,12 @@ public class TraceMetadataLoader {
         
     }
 
+    
+    
+    
+    
+    
+    
     private class AnnotationKeyChecker {
         private final Map<Integer, Pair<AnnotationKey>> annotationKeyCodeMap = new HashMap<Integer, Pair<AnnotationKey>>();
 
@@ -229,4 +266,11 @@ public class TraceMetadataLoader {
     }
 
 
+    
+    
+    
+    
+    
+    
+    
 }

@@ -36,6 +36,8 @@ public class DefaultTraceMetadataLoaderService implements TraceMetadataLoaderSer
         this(ClassLoaderUtils.getDefaultClassLoader());
     }
 
+    
+    
     public DefaultTraceMetadataLoaderService(URL[] jarLists) {
         if (jarLists == null) {
             throw new NullPointerException("jarLists must not be null");
@@ -45,6 +47,12 @@ public class DefaultTraceMetadataLoaderService implements TraceMetadataLoaderSer
 
     }
 
+    
+    
+    
+    
+    
+    
     public DefaultTraceMetadataLoaderService(List<TraceMetadataProvider> providers) {
         if (providers == null) {
             throw new NullPointerException("providers must not be null");
@@ -54,6 +62,9 @@ public class DefaultTraceMetadataLoaderService implements TraceMetadataLoaderSer
 
     }
 
+    
+    
+    
 
     public DefaultTraceMetadataLoaderService(ClassLoader classLoader) {
         if (classLoader == null) {
@@ -63,11 +74,17 @@ public class DefaultTraceMetadataLoaderService implements TraceMetadataLoaderSer
         loader.load(classLoader);
     }
 
+    
+    
+    
     @Override
     public List<ServiceTypeInfo> getServiceTypeInfos() {
         return loader.getServiceTypeInfos();
     }
 
+    
+    
+    
     @Override
     public List<AnnotationKey> getAnnotationKeys() {
         return loader.getAnnotationKeys();

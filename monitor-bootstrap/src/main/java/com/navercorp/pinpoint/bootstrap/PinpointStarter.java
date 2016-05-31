@@ -1,17 +1,3 @@
-/**
- * Copyright 2014 NAVER Corp.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *     http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.navercorp.pinpoint.bootstrap;
 
 import java.lang.instrument.Instrumentation;
@@ -42,10 +28,7 @@ import com.navercorp.pinpoint.common.util.SimpleProperty;
 import com.navercorp.pinpoint.common.util.SystemProperty;
 import com.navercorp.pinpoint.exception.PinpointException;
 
-/**
- * @author Jongho Moon
- *
- */
+
 public class PinpointStarter {
     private static final Logger logger = Logger.getLogger(PinpointStarter   .class.getName());
 
@@ -71,6 +54,8 @@ public class PinpointStarter {
         this.instrumentation = instrumentation;
     }
 
+    
+    
     public void start() {
         // 1st find boot-strap.jar
         final ClassPathResolver classPathResolver = new ClassPathResolver();
@@ -99,11 +84,13 @@ public class PinpointStarter {
             logPinpointAgentLoadFail();
             return;
         }
-        //’“µΩÀ˘”–≤Âº˛
+    
         URL[] pluginJars = classPathResolver.resolvePlugins();
-        
+        //Á±ªÂä†ËΩΩ
         TraceMetadataLoaderService typeLoaderService = new DefaultTraceMetadataLoaderService(pluginJars);
+        //ÊúçÂä°Á±ªÂûã
         ServiceTypeRegistryService serviceTypeRegistryService  = new DefaultServiceTypeRegistryService(typeLoaderService);
+        //
         AnnotationKeyRegistryService annotationKeyRegistryService = new DefaultAnnotationKeyRegistryService(typeLoaderService);
 
         String configPath = getConfigPath(classPathResolver);
@@ -140,6 +127,11 @@ public class PinpointStarter {
         }
     }
 
+    
+    
+    
+    
+    
     private AgentOption createAgentOption(String agentArgs, Instrumentation instrumentation, ProfilerConfig profilerConfig, URL[] pluginJars, String bootStrapJarCorePath, ServiceTypeRegistryService serviceTypeRegistryService, AnnotationKeyRegistryService annotationKeyRegistryService) {
 
         return new DefaultAgentOption(agentArgs, instrumentation, profilerConfig, pluginJars, bootStrapJarCorePath, serviceTypeRegistryService, annotationKeyRegistryService);

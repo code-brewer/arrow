@@ -51,6 +51,8 @@ public class DefaultAnnotationKeyRegistryService implements AnnotationKeyRegistr
 
         StaticFieldLookUp<AnnotationKey> staticFieldLookUp = new StaticFieldLookUp<AnnotationKey>(AnnotationKey.class, AnnotationKey.class);
         List<AnnotationKey> lookup = staticFieldLookUp.lookup();
+        
+        
         for (AnnotationKey serviceType: lookup) {
             if (logger.isLoggable(Level.INFO)) {
                 logger.info("add Default AnnotationKey:" + serviceType);

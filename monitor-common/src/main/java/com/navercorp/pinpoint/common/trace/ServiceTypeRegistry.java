@@ -1,19 +1,3 @@
-/*
- * Copyright 2014 NAVER Corp.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.navercorp.pinpoint.common.trace;
 
 import com.navercorp.pinpoint.common.util.apache.IntHashMap;
@@ -21,9 +5,7 @@ import com.navercorp.pinpoint.common.util.apache.IntHashMapUtils;
 
 import java.util.*;
 
-/**
- * @author emeroad
- */
+
 public class ServiceTypeRegistry {
 
     private final IntHashMap<ServiceType> codeLookupTable;
@@ -38,6 +20,10 @@ public class ServiceTypeRegistry {
         this.descLookupTable = new HashMap<String, List<ServiceType>>();
     }
 
+    
+    
+    
+    
     private ServiceTypeRegistry(HashMap<Integer, ServiceType> buildMap) {
         if (buildMap == null) {
             throw new NullPointerException("codeLookupTable must not be null");
@@ -46,6 +32,10 @@ public class ServiceTypeRegistry {
         this.nameLookupTable = buildNameLookupTable(buildMap.values());
         this.descLookupTable = buildDescLookupTable(buildMap.values());
     }
+    
+    
+    
+    
 
     private Map<String, ServiceType> buildNameLookupTable(Collection<ServiceType> serviceTypes) {
         final Map<String, ServiceType> copy = new HashMap<String, ServiceType>();
@@ -59,6 +49,9 @@ public class ServiceTypeRegistry {
         return copy;
     }
 
+    
+    
+    
     public ServiceType findServiceType(short code) {
         final ServiceType serviceType = this.codeLookupTable.get(code);
         if (serviceType == null) {
@@ -115,6 +108,8 @@ public class ServiceTypeRegistry {
     }
 
 
+    
+    
     public static class Builder {
 
         private final HashMap<Integer, ServiceType> buildMap = new HashMap<Integer, ServiceType>();
