@@ -6,7 +6,7 @@ import com.navercorp.pinpoint.bootstrap.interceptor.scope.InterceptorScope;
 /**
  * @author Woonduk Kang(emeroad)
  */
-public class GuardInstrumentContext implements TransformTemplate {
+public class GuardInstrumentContext implements InstrumentContext {
 	
 	
     private final InstrumentContext instrumentContext;
